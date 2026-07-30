@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== THÈME CLAIR (par défaut / :root) ===== */
+:root {
+  --ink: 247 246 242;        /* fond page (off-white chaud) */
+  --ink-soft: 239 237 230;   /* fond sections */
+  --ink-card: 255 255 255;   /* cartes */
+  --ink-border: 224 220 211; /* bordures */
+  --bone: 24 24 27;          /* texte principal (presque noir) */
+  --bone-dim: 82 80 74;      /* texte secondaire */
+  --bone-faint: 135 132 124; /* texte discret */
+  --acid: 77 124 15;         /* accent (vert profond, lisible sur clair) */
+  --acid-dim: 101 153 30;
+  --grid: 24 24 27;          /* lignes de grille (sombres sur fond clair) */
+  --grain-opacity: 0.025;
+}
+
+/* ===== THÈME SOMBRE (.dark) ===== */
+.dark {
+  --ink: 10 10 12;
+  --ink-soft: 16 16 20;
+  --ink-card: 20 20 24;
+  --ink-border: 38 38 46;
+  --bone: 244 241 234;
+  --bone-dim: 168 165 156;
+  --bone-faint: 107 106 100;
+  --acid: 205 253 80;        /* vert acide vif sur fond sombre */
+  --acid-dim: 155 191 58;
+  --grid: 255 255 255;
+  --grain-opacity: 0.04;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--ink));
+  color: rgb(var(--bone));
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Sélection texte */
+::selection {
+  background: rgb(var(--acid));
+  color: rgb(var(--ink));
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--ink));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--ink-border));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--bone-faint));
+}
+
+/* Texture grain en overlay global */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Lignes de grille décoratives (s'adaptent au thème) */
+.grid-lines {
+  background-image:
+    linear-gradient(to right, rgb(var(--grid) / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(var(--grid) / 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Effet halo radial */
+.glow-acid {
+  background: radial-gradient(
+    600px circle at 50% 0%,
+    rgb(var(--acid) / 0.12),
+    transparent 70%
+  );
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Halo qui suit le curseur (voir components/Spotlight.jsx) */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    280px circle at var(--mx, 50%) var(--my, 50%),
+    rgb(var(--acid) / 0.15),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+/* Flottement lent pour les blobs décoratifs en fond */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-16px, 24px); }
+}
+.animate-float-slow {
+  animation: float-slow 14s ease-in-out infinite;
+}
