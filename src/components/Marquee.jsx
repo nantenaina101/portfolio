@@ -1,19 +1,6 @@
 "use client";
 
-const words = [
-  "Web Scraping",
-  "Python",
-  "Data Extraction",
-  "React",
-  "Vue.js",
-  "Laravel",
-  "Symfony",
-  "Spring Boot",
-  "MongoDB",
-  "PostgreSQL",
-  "REST API",
-  "Automatisation",
-];
+import { keywords as words } from "@/data/content";
 
 export default function Marquee() {
   const list = [...words, ...words];

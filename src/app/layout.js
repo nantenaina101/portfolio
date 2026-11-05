@@ -25,22 +25,24 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Jean Gilbert Randrianantenainasoa — Expert Data & Développeur Web",
+  title: "Jean Gilbert Randrianantenainasoa — Docteur en Physique Nucléaire Appliquée",
   description:
-    "Portfolio de Jean Gilbert Randrianantenainasoa, expert en extraction de données (web scraping) et développeur web full-stack basé à Antananarivo, Madagascar.",
+    "Portfolio de Jean Gilbert Randrianantenainasoa, docteur en physique nucléaire appliquée : télédétection, érosion et sédimentation, changement climatique et géochronologie ²¹⁰Pb/¹³⁷Cs. Antananarivo, Madagascar.",
   keywords: [
-    "web scraping",
-    "data extraction",
-    "développeur web",
-    "Python",
-    "Next.js",
+    "télédétection",
+    "érosion",
+    "sédimentation",
+    "changement climatique",
+    "géochronologie",
+    "plomb-210",
     "Madagascar",
+    "Python",
   ],
   authors: [{ name: "Jean Gilbert Randrianantenainasoa" }],
   openGraph: {
     title: "Jean Gilbert Randrianantenainasoa — Portfolio",
     description:
-      "Expert en extraction de données et développement web full-stack.",
+      "Docteur en physique nucléaire appliquée — télédétection, érosion et changement climatique à l'échelle d'un bassin versant.",
     type: "website",
   },
 };

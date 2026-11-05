@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, Github, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, Github, MapPin, ArrowUpRight, FlaskConical } from "lucide-react";
 import { profile } from "@/data/content";
 import ContactForm from "@/components/ContactForm";
 import Magnetic from "@/components/Magnetic";
@@ -19,6 +19,12 @@ const contacts = [
     label: "Téléphone",
     value: profile.phone,
     href: `tel:${profile.phone.replace(/\s/g, "")}`,
+  },
+  {
+    icon: FlaskConical,
+    label: "ORCID",
+    value: profile.orcidLabel,
+    href: profile.orcid,
   },
   {
     icon: Github,
@@ -47,7 +53,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="font-mono text-xs uppercase tracking-[0.3em] text-acid"
         >
-          Construisons quelque chose
+          Collaborations & opportunités
         </motion.p>
 
         <motion.h2
@@ -57,7 +63,7 @@ export default function Contact() {
           transition={{ duration: 0.7 }}
           className="mx-auto mt-6 max-w-3xl font-display text-5xl font-semibold leading-[1.05] text-bone md:text-7xl"
         >
-          Une idée, un projet&nbsp;? <span className="italic text-acid">Parlons-en</span>
+          Un projet de recherche&nbsp;? <span className="italic text-gradient">Parlons-en</span>
         </motion.h2>
 
         <motion.div
@@ -92,23 +98,24 @@ export default function Contact() {
           <ContactForm />
         </motion.div>
 
-        <div className="mx-auto mt-20 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-border bg-ink-border md:grid-cols-4">
+        <div className="mx-auto mt-20 grid max-w-6xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-border bg-ink-border md:grid-cols-5">
           {contacts.map((c) => {
             const Icon = c.icon;
             const inner = (
-              <Spotlight className="flex h-full flex-col items-center gap-3 bg-ink-card p-6 text-center transition-colors hover:bg-ink-soft">
+              <Spotlight className="flex h-full flex-col items-center gap-3 bg-ink-card p-5 text-center transition-colors hover:bg-ink-soft">
                 <Icon size={20} className="text-acid" />
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-bone-faint">
                     {c.label}
                   </p>
-                  <p className="mt-1 break-all text-sm text-bone-dim">{c.value}</p>
+                  <p className="mt-1 break-words text-xs text-bone-dim [overflow-wrap:anywhere]">{c.value}</p>
                 </div>
               </Spotlight>
             );
             return c.href ? (
               <a
                 key={c.label}
+                className="col-span-1 last:col-span-2 md:last:col-span-1"
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
@@ -116,7 +123,7 @@ export default function Contact() {
                 {inner}
               </a>
             ) : (
-              <div key={c.label}>{inner}</div>
+              <div key={c.label} className="col-span-1 last:col-span-2 md:last:col-span-1">{inner}</div>
             );
           })}
         </div>

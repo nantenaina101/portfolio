@@ -15,9 +15,11 @@ import {
   Briefcase,
   Wrench,
   GraduationCap,
+  FlaskConical,
+  BookOpen,
   Send,
 } from "lucide-react";
-import { profile } from "@/data/content";
+import { profile, publication } from "@/data/content";
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -35,10 +37,10 @@ export default function CommandPalette() {
         run: () => scrollTo("#about"),
       },
       {
-        id: "experience",
-        label: "Aller à Expérience",
-        icon: Briefcase,
-        run: () => scrollTo("#experience"),
+        id: "research",
+        label: "Aller à Recherche",
+        icon: FlaskConical,
+        run: () => scrollTo("#research"),
       },
       {
         id: "skills",
@@ -51,6 +53,12 @@ export default function CommandPalette() {
         label: "Aller à Formation",
         icon: GraduationCap,
         run: () => scrollTo("#education"),
+      },
+      {
+        id: "experience",
+        label: "Aller à Expérience",
+        icon: Briefcase,
+        run: () => scrollTo("#experience"),
       },
       {
         id: "contact",
@@ -75,6 +83,12 @@ export default function CommandPalette() {
         label: `Copier l'email (${profile.email})`,
         icon: Mail,
         run: () => navigator.clipboard?.writeText(profile.email),
+      },
+      {
+        id: "publication",
+        label: "Lire la publication (DOI)",
+        icon: BookOpen,
+        run: () => window.open(publication.doi, "_blank", "noreferrer"),
       },
       {
         id: "github",

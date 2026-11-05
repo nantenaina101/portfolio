@@ -4,30 +4,32 @@
 
 /* ===== THÈME CLAIR (par défaut / :root) ===== */
 :root {
-  --ink: 247 246 242;        /* fond page (off-white chaud) */
-  --ink-soft: 239 237 230;   /* fond sections */
+  --ink: 246 248 248;        /* fond page (blanc légèrement bleuté) */
+  --ink-soft: 236 242 242;   /* fond sections */
   --ink-card: 255 255 255;   /* cartes */
-  --ink-border: 224 220 211; /* bordures */
-  --bone: 24 24 27;          /* texte principal (presque noir) */
-  --bone-dim: 82 80 74;      /* texte secondaire */
-  --bone-faint: 135 132 124; /* texte discret */
-  --acid: 77 124 15;         /* accent (vert profond, lisible sur clair) */
-  --acid-dim: 101 153 30;
-  --grid: 24 24 27;          /* lignes de grille (sombres sur fond clair) */
+  --ink-border: 213 223 224; /* bordures */
+  --bone: 15 23 28;          /* texte principal */
+  --bone-dim: 62 76 82;      /* texte secondaire */
+  --bone-faint: 112 128 134; /* texte discret */
+  --acid: 15 118 110;        /* accent teal profond, lisible sur clair */
+  --acid-dim: 20 140 128;
+  --accent-2: 37 99 235;     /* second accent (bleu) pour les dégradés */
+  --grid: 15 23 28;          /* lignes de grille */
   --grain-opacity: 0.025;
 }
 
 /* ===== THÈME SOMBRE (.dark) ===== */
 .dark {
-  --ink: 10 10 12;
-  --ink-soft: 16 16 20;
-  --ink-card: 20 20 24;
-  --ink-border: 38 38 46;
-  --bone: 244 241 234;
-  --bone-dim: 168 165 156;
-  --bone-faint: 107 106 100;
-  --acid: 205 253 80;        /* vert acide vif sur fond sombre */
-  --acid-dim: 155 191 58;
+  --ink: 7 11 14;
+  --ink-soft: 12 17 22;
+  --ink-card: 15 21 27;
+  --ink-border: 30 40 49;
+  --bone: 238 244 244;
+  --bone-dim: 160 175 180;
+  --bone-faint: 100 117 124;
+  --acid: 94 234 212;        /* teal vif sur fond sombre */
+  --acid-dim: 45 190 170;
+  --accent-2: 96 165 250;
   --grid: 255 255 255;
   --grain-opacity: 0.04;
 }
@@ -132,4 +134,42 @@ body {
 }
 .animate-float-slow {
   animation: float-slow 14s ease-in-out infinite;
+}
+
+/* Texte en dégradé (accents des titres) */
+.text-gradient {
+  background: linear-gradient(100deg, rgb(var(--acid)), rgb(var(--accent-2)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Carte « verre » : fond translucide + flou */
+.glass {
+  background: rgb(var(--ink-card) / 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Bordure en dégradé discrète pour les cartes mises en avant */
+.border-gradient {
+  position: relative;
+}
+.border-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgb(var(--acid) / 0.55), transparent 45%, rgb(var(--accent-2) / 0.35));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Respect des préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-float-slow, .animate-marquee, .animate-pulseDot { animation: none !important; }
 }

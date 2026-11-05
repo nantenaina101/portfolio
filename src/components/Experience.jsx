@@ -10,7 +10,7 @@ export default function Experience() {
       id="experience"
       className="relative mx-auto max-w-6xl px-6 py-28 md:px-10"
     >
-      <SectionLabel index="02">Expérience professionnelle</SectionLabel>
+      <SectionLabel index="05">Expérience professionnelle complémentaire</SectionLabel>
 
       <div className="relative border-l border-ink-border pl-8 md:pl-12">
         {experiences.map((exp, i) => (

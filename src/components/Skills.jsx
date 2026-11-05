@@ -11,14 +11,18 @@ export default function Skills() {
       className="relative border-y border-ink-border bg-ink-soft py-28"
     >
       <div className="mx-auto max-w-6xl px-6 md:px-10">
-        <SectionLabel index="03">Compétences techniques</SectionLabel>
+        <SectionLabel index="03">Compétences scientifiques & techniques</SectionLabel>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group, i) => (
-            <Reveal key={group.title} delay={i * 0.08}>
-              <Spotlight className="group h-full rounded-2xl border border-ink-border bg-ink-card p-8 transition-all hover:border-acid/40">
+            <Reveal
+              key={group.title}
+              delay={i * 0.08}
+              className={group.wide ? "md:col-span-2 lg:col-span-3" : ""}
+            >
+              <Spotlight className="group h-full rounded-2xl border border-ink-border bg-ink-card p-7 transition-all hover:border-acid/40">
                 <div className="mb-6 flex items-center justify-between">
-                  <h3 className="font-display text-xl font-medium text-bone">
+                  <h3 className="font-display text-lg font-medium leading-snug text-bone">
                     {group.title}
                   </h3>
                   <span className="font-mono text-xs text-bone-faint">
@@ -29,7 +33,7 @@ export default function Skills() {
                   {group.items.map((item) => (
                     <span
                       key={item}
-                      className="rounded-lg border border-ink-border bg-ink px-3.5 py-1.5 font-mono text-sm text-bone-dim transition-colors group-hover:border-acid/20 hover:!border-acid hover:!text-acid"
+                      className="rounded-lg border border-ink-border bg-ink px-3 py-1.5 font-mono text-[13px] text-bone-dim transition-colors group-hover:border-acid/20 hover:!border-acid hover:!text-acid"
                     >
                       {item}
                     </span>

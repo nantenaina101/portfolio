@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowDown, Github, Mail } from "lucide-react";
-import { profile, stats } from "@/data/content";
+import { ArrowDown, BookOpen, Github, Mail } from "lucide-react";
+import { profile, stats, publication } from "@/data/content";
 import Magnetic from "@/components/Magnetic";
 import TypewriterText from "@/components/TypewriterText";
 import { handleAnchorClick } from "@/lib/scroll";
@@ -91,10 +91,10 @@ export default function Hero() {
             initial={{ y: 24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-acid"
+            className="glass mb-6 inline-flex items-center gap-3 rounded-full border border-acid/30 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] text-acid"
           >
-            <span className="h-px w-8 bg-acid" />
-            Disponible pour de nouveaux projets
+            <span className="h-2 w-2 animate-pulseDot rounded-full bg-acid" />
+            {profile.badge}
           </motion.p>
 
           <TypewriterText
@@ -112,7 +112,7 @@ export default function Hero() {
               segments={[{ text: profile.title }]}
               startDelay={150}
               speed={16}
-              className="mt-4 font-mono text-sm uppercase tracking-widest text-bone-dim"
+              className="mt-5 font-mono text-sm uppercase tracking-widest text-acid"
               onDone={() => setSubtitleDone(true)}
             />
           )}
@@ -122,6 +122,17 @@ export default function Hero() {
             initial="hidden"
             animate={subtitleDone ? "show" : "hidden"}
           >
+            <motion.ul variants={item} className="mt-5 flex flex-wrap gap-2">
+              {profile.domains.map((d) => (
+                <li
+                  key={d}
+                  className="rounded-full border border-ink-border bg-ink-card/60 px-3 py-1 text-xs text-bone-dim"
+                >
+                  {d}
+                </li>
+              ))}
+            </motion.ul>
+
             <motion.p
               variants={item}
               className="mt-6 max-w-xl text-balance text-lg leading-relaxed text-bone-dim"
@@ -137,7 +148,18 @@ export default function Hero() {
                   className="group inline-flex items-center gap-2 rounded-full bg-acid px-6 py-3 font-mono text-sm font-medium uppercase tracking-wider text-ink transition-transform"
                 >
                   <Mail size={16} />
-                  Travaillons ensemble
+                  Me contacter
+                </a>
+              </Magnetic>
+              <Magnetic strength={0.25}>
+                <a
+                  href={publication.doi}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink-border px-6 py-3 font-mono text-sm uppercase tracking-wider text-bone transition-colors hover:border-acid hover:text-acid"
+                >
+                  <BookOpen size={16} />
+                  Publication
                 </a>
               </Magnetic>
               <Magnetic strength={0.25}>
@@ -157,34 +179,38 @@ export default function Hero() {
 
         {/* Colonne visuelle : pile de cartes + photo avec tilt 3D */}
         <div className="relative mx-auto flex w-full max-w-sm items-center justify-center">
-          {/* Carte "terminal" en arrière-plan, légèrement pivotée */}
+          {/* Carte « résultats » en arrière-plan, légèrement pivotée */}
           <motion.div
             initial={{ opacity: 0, rotate: 0, y: 20 }}
-            animate={{ opacity: 1, rotate: -6, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -left-4 top-6 hidden w-72 rounded-2xl border border-ink-border bg-ink-card/90 p-1 shadow-xl backdrop-blur sm:block"
+            animate={{ opacity: 1, rotate: 4, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            className="glass absolute -bottom-12 -right-12 z-10 hidden w-64 rounded-2xl border border-ink-border p-1 shadow-xl sm:block"
           >
             <div className="flex items-center gap-2 border-b border-ink-border px-4 py-3">
               <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
               <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
               <span className="h-3 w-3 rounded-full bg-[#28c840]" />
               <span className="ml-3 font-mono text-xs text-bone-faint">
-                scraper.py
+                mandraka.py
               </span>
             </div>
             <pre className="overflow-hidden p-5 font-mono text-[12px] leading-relaxed">
               <code>
-                <span className="text-bone-faint">import</span>{" "}
-                <span className="text-bone">requests, json</span>
-                {"\n\n"}
-                <span className="text-acid">class</span>{" "}
-                <span className="text-bone">Developer</span>:
+                <span className="text-bone-faint"># bassin de Mandraka</span>
                 {"\n"}
-                {"    "}role <span className="text-bone-faint">=</span>{" "}
-                <span className="text-acid">"Full-Stack + Data"</span>
+                precip_trend <span className="text-bone-faint">=</span>{" "}
+                <span className="text-acid">-11</span>
+                <span className="text-bone-faint"> mm/an</span>
                 {"\n"}
-                {"    "}xp_years <span className="text-bone-faint">=</span>{" "}
-                <span className="text-bone">5</span>
+                rupture <span className="text-bone-faint">=</span>{" "}
+                <span className="text-acid">1998</span>
+                {"\n"}
+                soil_loss <span className="text-bone-faint">=</span>{" "}
+                <span className="text-acid">30</span>
+                <span className="text-bone-faint"> t/ha/an</span>
+                {"\n"}
+                trap_eff <span className="text-bone-faint">=</span>{" "}
+                <span className="text-acid">"6–10 %"</span>
               </code>
             </pre>
           </motion.div>
@@ -197,12 +223,12 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8, x: -10 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -bottom-5 -left-5 flex items-center gap-3 rounded-2xl border border-ink-border bg-ink-card px-4 py-3 shadow-xl backdrop-blur"
+            className="glass absolute -left-8 top-8 z-10 flex items-center gap-3 rounded-2xl border border-ink-border px-4 py-3 shadow-xl"
           >
             <span className="font-display text-2xl font-semibold text-acid">
               {stats[0].value}
             </span>
-            <span className="max-w-[7rem] text-xs leading-snug text-bone-dim">
+            <span className="max-w-[9rem] text-xs leading-snug text-bone-dim">
               {stats[0].label}
             </span>
           </motion.div>

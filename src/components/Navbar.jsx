@@ -8,10 +8,11 @@ import { useActiveSection } from "@/lib/useActiveSection";
 import { handleAnchorClick } from "@/lib/scroll";
 
 const links = [
-  { id: "about", label: "À propos" },
-  { id: "experience", label: "Expérience" },
+  { id: "about", label: "Profil" },
+  { id: "research", label: "Recherche" },
   { id: "skills", label: "Compétences" },
   { id: "education", label: "Formation" },
+  { id: "experience", label: "Expérience" },
   { id: "contact", label: "Contact" },
 ];
 

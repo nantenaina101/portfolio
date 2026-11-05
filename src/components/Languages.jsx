@@ -8,7 +8,7 @@ export default function Languages() {
   return (
     <section className="relative border-t border-ink-border bg-ink-soft py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-10">
-        <SectionLabel index="05">Langues</SectionLabel>
+        <SectionLabel index="06">Langues</SectionLabel>
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           {languages.map((lang, i) => (
@@ -22,6 +22,9 @@ export default function Languages() {
                     {lang.level}
                   </span>
                 </div>
+                {lang.note && (
+                  <p className="mb-3 text-sm text-bone-faint">{lang.note}</p>
+                )}
                 <div className="h-1.5 w-full overflow-hidden rounded-full bg-ink-border">
                   <motion.div
                     initial={{ width: 0 }}
