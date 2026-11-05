@@ -230,6 +230,17 @@ export const education = [
       "Recherche menée à l'INSTN-Madagascar, Département Analyses et Techniques Nucléaires. Thèse : « Phénomène d'érosion et de sédimentation dans le contexte du changement climatique : cas du bassin versant de Mandraka ».",
   },
   {
+    degree: "Atelier « Les outils d'intelligence artificielle en géosciences »",
+    school:
+      "Faculté des Sciences de Rabat (Université Mohammed V) · IRD (IRN RHYMA-CES) · IAHS Africa Committee",
+    period: "30 oct. – 1er nov. 2025",
+    location: "À distance",
+    current: false,
+    badge: "Certificat de participation",
+    details:
+      "Atelier de formation suivi à distance, organisé à la Faculté des Sciences de Rabat par l'IRN RHYMA-CES (IRD), le LGEE (Université Mohammed V de Rabat) et l'IAHS Africa Committee.",
+  },
+  {
     degree: "TC Fellowship AIEA — Training on catchment hydrological model",
     school:
       "Agence internationale de l'énergie atomique (AIEA) · CNESTEN, Rabat, Maroc",
