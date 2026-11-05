@@ -29,9 +29,9 @@ export default function Education() {
                 >
                   {edu.period}
                 </span>
-                {edu.current && (
+                {(edu.current || edu.badge) && (
                   <span className="w-fit rounded-full border border-acid/30 px-2.5 py-0.5 text-[10px] uppercase tracking-wider text-acid">
-                    Docteur
+                    {edu.badge ?? "Docteur"}
                   </span>
                 )}
               </div>

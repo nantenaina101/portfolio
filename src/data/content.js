@@ -230,12 +230,15 @@ export const education = [
       "Recherche menée à l'INSTN-Madagascar, Département Analyses et Techniques Nucléaires. Thèse : « Phénomène d'érosion et de sédimentation dans le contexte du changement climatique : cas du bassin versant de Mandraka ».",
   },
   {
-    degree: "TC Fellowship — Training on catchment hydrological model",
-    school: "Rabat, Maroc · Références RAF0063, EVT2405929",
+    degree: "TC Fellowship AIEA — Training on catchment hydrological model",
+    school:
+      "Agence internationale de l'énergie atomique (AIEA) · CNESTEN, Rabat, Maroc",
     period: "1 sept. – 28 nov. 2025",
     location: "Rabat",
     current: false,
-    details: "Formation de 3 mois à la modélisation hydrologique de bassin versant.",
+    badge: "Certificat AIEA",
+    details:
+      "Formation de 3 mois à la modélisation hydrologique de bassin versant, validée par un certificat de l'AIEA (domaine : renforcement des capacités, développement des ressources humaines et gestion des connaissances). Références RAF0063, EVT2405929.",
   },
   {
     degree: "Master en Physique et Applications",
